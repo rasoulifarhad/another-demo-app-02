@@ -10,8 +10,8 @@ import { AdminRoutingModule } from './admin-routing.module';
 
 @NgModule({
   declarations: [
-    AdminDashboardComponent,
     AdminComponent,
+    AdminDashboardComponent,
     ManageCrisesComponent,
     ManageHeroesComponent
   ],
