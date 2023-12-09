@@ -63,5 +63,13 @@ The router supports multiple guard interfaces:
 - CanLoad to mediate navigation to a feature module loaded asynchronously.
 
 
+Generate an AuthGuard in the auth folder.
 
+```sh
+ng generate guard auth/auth
+```
+
+```sh
+ng generate service auth/auth
+```
 
