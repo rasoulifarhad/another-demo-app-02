@@ -34,3 +34,13 @@ See https://stackblitz.com/angular/argbonpbgrv?file=src%2Fapp%2Fapp-routing.modu
 See https://docs.angular.lat/guide/singleton-services#forRoot-router
 See https://www.concretepage.com/angular/angular-functional-route-guards
 See https://stackblitz.com/angular/argbonpbgrv?file=src%2Fapp%2Fheroes%2Fhero-list%2Fhero-list.component.ts
+
+
+Recommended pattern for Angular applications:
+
+- Each feature area resides in its own folder.
+- Each feature has its own Angular feature module.
+- Each area has its own area root component.
+- Each area root component has its own router outlet and child routes.
+- Feature area routes rarely (if ever) cross with routes of other features.
+

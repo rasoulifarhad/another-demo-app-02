@@ -6,7 +6,7 @@ import { CrisisListComponent } from './crisis-list/crisis-list.component';
 import { ComposeMessageComponent } from './compose-message/compose-message.component';
 import { SelectivePreloadingStrategyService } from './selective-preloading-strategy.service';
 
-const routes: Routes = [
+const appRoutes: Routes = [
   {
     path: 'compose',
     component: ComposeMessageComponent
@@ -17,13 +17,8 @@ const routes: Routes = [
     canLoad: [authGuard]
   },
   {
-    path: 'crisis-center',
-    component: CrisisListComponent,
-    data: {preload: true}
-  },
-  {
     path: '',
-    redirectTo: '/superheroes',
+    redirectTo: '/heroes',
     pathMatch: 'full'
   },
   {
@@ -34,7 +29,7 @@ const routes: Routes = [
 
 @NgModule({
   imports: [RouterModule.forRoot(
-    routes,
+    appRoutes,
     {
       enableTracing: false,
       preloadingStrategy: SelectivePreloadingStrategyService

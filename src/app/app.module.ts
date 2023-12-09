@@ -12,6 +12,7 @@ import { HeroesModule } from './heroes/heroes.module';
 import { MessagesComponent } from './messages/messages.component';
 import { AdminModule } from './admin/admin.module';
 import { ComposeMessageComponent } from './compose-message/compose-message.component';
+import { CrisisCenterModule } from './crisis-center/crisis-center.module';
 
 @NgModule({
     declarations: [
@@ -28,6 +29,7 @@ import { ComposeMessageComponent } from './compose-message/compose-message.compo
         BrowserAnimationsModule,
         AuthModule,
         HeroesModule,
+        CrisisCenterModule,
         HttpClientModule,
         AppRoutingModule,
         AdminModule,
