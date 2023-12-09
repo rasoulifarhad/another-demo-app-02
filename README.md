@@ -44,3 +44,24 @@ Recommended pattern for Angular applications:
 - Each area root component has its own router outlet and child routes.
 - Feature area routes rarely (if ever) cross with routes of other features.
 
+A guard's return value controls the router's behavior:
+
+- If it returns true, the navigation process continues.
+- If it returns false, the navigation process stops and the user stays put.
+- If it returns a UrlTree, the current navigation cancels and a new navigation is initiated to the UrlTree returned.
+
+
+
+Note: The guard can also tell the router to navigate elsewhere, effectively canceling the current navigation. When doing so inside a guard, the guard should return false;
+
+The router supports multiple guard interfaces:
+
+- CanActivate to mediate navigation to a route.
+- CanActivateChild to mediate navigation to a child route.
+- CanDeactivate to mediate navigation away from the current route.
+- Resolve to perform route data retrieval before route activation.
+- CanLoad to mediate navigation to a feature module loaded asynchronously.
+
+
+
+
