@@ -7,7 +7,6 @@ import { AuthModule } from "./auth/auth.module";
 import { HttpClientModule } from '@angular/common/http';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { CrisisListComponent } from './crisis-list/crisis-list.component';
 import { HeroesModule } from './heroes/heroes.module';
 import { MessagesComponent } from './messages/messages.component';
 import { AdminModule } from './admin/admin.module';
@@ -18,7 +17,6 @@ import { CrisisCenterModule } from './crisis-center/crisis-center.module';
     declarations: [
         AppComponent,
         PageNotFoundComponent,
-        CrisisListComponent,
         MessagesComponent,
         ComposeMessageComponent,
     ],

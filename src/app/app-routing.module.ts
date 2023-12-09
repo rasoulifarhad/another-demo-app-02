@@ -2,7 +2,6 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { authGuard } from './auth/auth.guard';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
-import { CrisisListComponent } from './crisis-list/crisis-list.component';
 import { ComposeMessageComponent } from './compose-message/compose-message.component';
 import { SelectivePreloadingStrategyService } from './selective-preloading-strategy.service';
 
