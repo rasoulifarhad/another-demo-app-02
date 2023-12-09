@@ -8,7 +8,8 @@ import { SelectivePreloadingStrategyService } from './selective-preloading-strat
 const appRoutes: Routes = [
   {
     path: 'compose',
-    component: ComposeMessageComponent
+    component: ComposeMessageComponent,
+    outlet: 'popup'
   },
   {
     path: 'admin',
