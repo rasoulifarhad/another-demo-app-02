@@ -13,7 +13,8 @@ import { AppRoutingModule } from './app-routing.module';
 import { AuthModule } from "./auth/auth.module";
 import { HeroesModule } from './heroes/heroes.module';
 import { CrisisCenterModule } from './crisis-center/crisis-center.module';
-// import { AdminModule } from './admin/admin.module';
+
+import { AdminModule } from './admin/admin.module';
 
 @NgModule({
     declarations: [
@@ -30,8 +31,8 @@ import { CrisisCenterModule } from './crisis-center/crisis-center.module';
         AuthModule,
         HeroesModule,
         CrisisCenterModule,
+        AdminModule,
         AppRoutingModule,
-        // AdminModule,
     ]
 })
 export class AppModule { }
