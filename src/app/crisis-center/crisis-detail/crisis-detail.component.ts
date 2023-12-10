@@ -1,6 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { Crisis } from '../crisis';
-import { ActivatedRoute, ParamMap, Router } from '@angular/router';
+import { ActivatedRoute, Data, ParamMap, Router } from '@angular/router';
 import { CrisisService } from '../crisis.service';
 import { Observable, map, of, switchMap, tap } from 'rxjs';
 import { DialogService } from 'src/app/dialog.service';
@@ -14,7 +14,7 @@ import { DialogService } from 'src/app/dialog.service';
 export class CrisisDetailComponent implements OnInit {
 
   @Input() crisis: Crisis | undefined;
-  crisis$: Observable<Crisis> | undefined;
+  crisis$!: Observable<Crisis | undefined>;
 
   _crisis!: Crisis;
   editName!: string
@@ -30,10 +30,11 @@ export class CrisisDetailComponent implements OnInit {
 
 
   ngOnInit(): void {
-    const activatedRouteSnapshot = this.route.snapshot;
-    this.editName = activatedRouteSnapshot.data['crisis'].name;
-    this._crisis = activatedRouteSnapshot.data['crisis'];
-    // use the ActivatedRoute service to retrieve the parameters for
+    this.route.data
+      .subscribe((data: Data) => {
+        this.editName = data['crisis'].name;
+        this._crisis = data['crisis'];
+      });    // use the ActivatedRoute service to retrieve the parameters for
     // the route, pull the crisis id from the parameters, and retrieve
     // the crisis to display.
 

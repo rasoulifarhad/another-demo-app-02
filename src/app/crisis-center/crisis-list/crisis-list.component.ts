@@ -22,7 +22,7 @@ export class CrisisListComponent implements OnInit {
   constructor(private crisisService: CrisisService, private messageService: MessageService, private route: ActivatedRoute) { }
 
   ngOnInit() {
-    this.getCrises();
+    // this.getCrises();
     this.crises$ = this.route.paramMap.pipe(
       switchMap(params => {
         this.selectedId = +params.get('id')!;
@@ -36,9 +36,9 @@ export class CrisisListComponent implements OnInit {
     this.messageService.add(`CrisisComponent: Selected crisis id=${crisis.id}`);
   }
 
-  getCrises(): void {
-    this.crisisService.getCrises()
-        .subscribe(crises => this.crises = crises);
-  }
+  // getCrises(): void {
+  //   this.crisisService.getCrises()
+  //       .subscribe(crises => this.crises = crises);
+  // }
 
 }

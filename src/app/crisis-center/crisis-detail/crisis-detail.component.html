@@ -15,6 +15,9 @@
 <div *ngIf="_crisis">
   <h3>{{editName}}</h3>
   <div>
+    <label>id: </label>{{_crisis.id}}
+  </div>
+  <div>
     <label>Name: </label>
     <input [(ngModel)]="editName" placeholder="name">
   </div>
