@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { AuthService } from '../auth.service';
-import { Router } from '@angular/router';
+import { NavigationExtras, Router } from '@angular/router';
 
 @Component({
   selector: 'app-login',
@@ -20,11 +20,18 @@ export class LoginComponent {
   login() {
     this.message = 'Trying to log in ...';
 
+    // set navigation extras object
+    // that passes on our global query params and fragment
+    const navigationExtras: NavigationExtras = {
+      queryParamsHandling: 'preserve',
+      preserveFragment: true
+    };
+
     this.authService.login().subscribe(() => {
       this.setMessage();
       if(this.authService.isLoggedIn) {
         const redirectUrl = '/admin';
-        this.router.navigate([redirectUrl]);
+        this.router.navigate([redirectUrl], navigationExtras);
       }
     });
   }
