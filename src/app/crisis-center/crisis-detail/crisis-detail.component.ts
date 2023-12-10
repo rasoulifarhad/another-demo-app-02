@@ -3,6 +3,7 @@ import { Crisis } from '../crisis';
 import { ActivatedRoute, ParamMap, Router } from '@angular/router';
 import { CrisisService } from '../crisis.service';
 import { Observable, of, switchMap } from 'rxjs';
+import { DialogService } from 'src/app/dialog.service';
 
 @Component({
   selector: 'app-crisis-detail',
@@ -14,14 +15,25 @@ export class CrisisDetailComponent implements OnInit {
   @Input() crisis: Crisis | undefined;
   crisis$: Observable<Crisis> | undefined;
 
+  _crisis!: Crisis;
+  editName!: string
+
+
   constructor(
     private route: ActivatedRoute,
     private router: Router,
-    private service: CrisisService
+    private service: CrisisService,
+    public dialogService: DialogService
   ) {}
 
   ngOnInit(): void {
-    // use the ActivatedRoute service to retrieve the parameters for
+    this.route.data
+      .subscribe((data) => {
+        let {crisis} = data;
+        this.editName = crisis.name;
+        this._crisis = crisis;
+      })
+         // use the ActivatedRoute service to retrieve the parameters for
     // the route, pull the crisis id from the parameters, and retrieve
     // the crisis to display.
 
@@ -45,5 +57,31 @@ export class CrisisDetailComponent implements OnInit {
     // Relative navigation back to the crises
     this.router.navigate(['../', {id: crisisId, foo: 'foo'}], { relativeTo: this.route});
     // this.router.navigate(['/supercrises', {id: crisisId, foo: 'Foo'}]);
+  }
+
+  cancel() {
+    this.gotoCrises();
+  }
+
+  save() {
+    this._crisis.name = this.editName;
+    this.gotoCrises();
+  }
+
+  canDeactivate() : Observable<boolean> | boolean{
+        // Allow synchronous navigation (`true`) if no crisis or the crisis is unchanged
+        if (!this._crisis || this._crisis.name === this.editName) {
+          return true;
+        }
+        // Otherwise ask the user with the dialog service and return its
+        // observable which resolves to true or false when the user decides
+        return this.dialogService.confirm('Discard changes?');
+  }
+
+  gotoCrises() {
+
+    const crisisId = this._crisis ? this._crisis.id : null;
+
+    this.router.navigate(['../', { id: crisisId, foo: 'foo'}], { relativeTo: this.route});
   }
 }
